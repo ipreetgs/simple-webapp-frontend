@@ -1,0 +1,38 @@
+pipeline:
+  name: SimpleWeb_react_CI
+  identifier: SimpleWeb_react_CI
+  projectIdentifier: DemoTx
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github_OAuth_1702454216196
+        repoName: simple-webapp-frontend
+        build: <+input>
+  stages:
+    - stage:
+        name: nodebuild
+        identifier: nodebuild
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: false
+          platform:
+            os: Linux
+            arch: Arm64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: echo "pipeline started"
