@@ -36,3 +36,21 @@ pipeline:
                   spec:
                     shell: Sh
                     command: echo "pipeline started"
+              - stepGroup:
+                  name: SAST
+                  identifier: SAST
+                  steps:
+                    - step:
+                        type: Semgrep
+                        name: Semgrep
+                        identifier: Semgrep
+                        spec:
+                          mode: orchestration
+                          config: default
+                          target:
+                            type: repository
+                            workspace: .
+                            detection: auto
+                          advanced:
+                            log:
+                              level: info
